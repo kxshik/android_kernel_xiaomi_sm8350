@@ -54,6 +54,14 @@ extern void rfx_get_util_gki510(int cpu, unsigned long boost,
 extern bool rfx_dl_bw_exceeded_gki510(int cpu, unsigned long bwmin);
 extern int rfx_setattr_sugov_gki510(struct task_struct *t);
 
+#ifndef arch_scale_thermal_pressure
+static inline unsigned long arch_scale_thermal_pressure(int cpu)
+{
+	return 0;
+}
+#define arch_scale_thermal_pressure arch_scale_thermal_pressure
+#endif
+
 /* ===================================================================== */
 /* Tunable defaults (KMI-safe: plain #defines).                          */
 /* ===================================================================== */
@@ -2406,7 +2414,7 @@ static void rfx_limits(struct cpufreq_policy *policy)
 static struct cpufreq_governor vorpal_gov = {
 	.name = CPUFREQ_VORPAL_NAME,
 	.owner = THIS_MODULE,
-	.flags = CPUFREQ_GOV_DYNAMIC_SWITCHING,
+	.dynamic_switching = true,
 	.init = rfx_init,
 	.exit = rfx_exit,
 	.start = rfx_start,
