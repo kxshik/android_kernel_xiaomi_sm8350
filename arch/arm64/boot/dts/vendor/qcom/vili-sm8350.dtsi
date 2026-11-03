@@ -421,8 +421,8 @@
 
 &thermal_zones {
 	laser_therm0 {
-		polling-delay-passive = <0>;
-		polling-delay = <0>;
+		polling-delay-passive = <25000>;
+		polling-delay = <25000>;
 		thermal-governor = "user_space";
 		thermal-sensors = <&pmk8350_adc_tm PM8350_ADC7_AMUX_THM1_100K_PU>;
 		wake-capable-sensor;
@@ -436,8 +436,8 @@
 	};
 
 	charger_therm0 {
-                polling-delay-passive = <0>;
-                polling-delay = <0>;
+                polling-delay-passive = <25000>;
+                polling-delay = <25000>;
                 thermal-governor = "user_space";
                 thermal-sensors = <&pmk8350_adc_tm PM8350_ADC7_AMUX_THM3_100K_PU>;
                 wake-capable-sensor;
@@ -451,8 +451,8 @@
         };
 
 	quiet_therm {
-		polling-delay-passive = <0>;
-		polling-delay = <0>;
+		polling-delay-passive = <25000>;
+		polling-delay = <25000>;
 		thermal-governor = "user_space";
 		thermal-sensors = <&pmk8350_adc_tm PM8350_ADC7_AMUX_THM4_100K_PU>;
 		wake-capable-sensor;
@@ -466,8 +466,8 @@
 	};
 
         wifi_therm {
-                polling-delay-passive = <0>;
-                polling-delay = <0>;
+                polling-delay-passive = <25000>;
+                polling-delay = <25000>;
                 thermal-governor = "user_space";
                 thermal-sensors = <&pmk8350_adc_tm PM8350_ADC7_AMUX_THM5_100K_PU>;
                 wake-capable-sensor;
@@ -481,8 +481,8 @@
         };
 
 	pa_therm0 {
-		polling-delay-passive = <0>;
-		polling-delay = <0>;
+		polling-delay-passive = <25000>;
+		polling-delay = <25000>;
 		thermal-governor = "user_space";
 		thermal-sensors = <&pmk8350_adc_tm PMR735A_ADC7_GPIO1_100K_PU>;
 		wake-capable-sensor;
@@ -496,8 +496,8 @@
 	};
 
 	pa_therm1 {
-                polling-delay-passive = <0>;
-                polling-delay = <0>;
+                polling-delay-passive = <25000>;
+                polling-delay = <25000>;
                 thermal-governor = "user_space";
                 thermal-sensors = <&pmk8350_adc_tm PMR735A_ADC7_GPIO2_100K_PU>;
                 wake-capable-sensor;
@@ -511,8 +511,8 @@
         };
 
         conn_therm {
-		polling-delay-passive = <0>;
-		polling-delay = <0>;
+		polling-delay-passive = <25000>;
+		polling-delay = <25000>;
 		thermal-governor = "user_space";
 		thermal-sensors = <&pmk8350_adc_tm PM8350B_ADC7_AMUX_THM4_100K_PU>;
 		wake-capable-sensor;
@@ -525,8 +525,8 @@
 		};
 	};
 	xo_therm {
-		polling-delay-passive = <0>;
-		polling-delay = <0>;
+		polling-delay-passive = <25000>;
+		polling-delay = <25000>;
 		thermal-governor = "user_space";
 		thermal-sensors = <&pmk8350_adc_tm PMK8350_ADC7_AMUX_THM1_100K_PU>;
 		wake-capable-sensor;

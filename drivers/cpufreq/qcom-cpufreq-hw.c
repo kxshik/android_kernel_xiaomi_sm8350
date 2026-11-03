@@ -370,6 +370,40 @@ static void qcom_cpufreq_ready(struct cpufreq_policy *policy)
 	struct device_node *np;
 	unsigned int cpu = policy->cpu;
 
+	struct cpufreq_frequency_table *pos;
+	unsigned int default_min = 0;
+	unsigned int best_freq = 0;
+
+	/*
+	 * Set default minimum CPU frequencies per cluster:
+	 * Little cluster (CPUs 0-3): 300MHz
+	 * Big cluster (CPUs 4-6): 710MHz (710400 kHz)
+	 * Prime cluster (CPU 7): 844MHz (844800 kHz)
+	 */
+	if (cpu < 4)
+		default_min = 300000;
+	else if (cpu < 7)
+		default_min = 710400;
+	else
+		default_min = 844800;
+
+	if (policy->freq_table) {
+		cpufreq_for_each_valid_entry(pos, policy->freq_table) {
+			if (pos->frequency >= default_min) {
+				best_freq = pos->frequency;
+				break;
+			}
+		}
+		if (best_freq) {
+			policy->cpuinfo.min_freq = best_freq;
+			policy->min = best_freq;
+			if (policy->min_freq_req)
+				freq_qos_update_request(policy->min_freq_req, best_freq);
+			pr_info("qcom-cpufreq-hw: CPU%d default min freq set to %u kHz\n",
+				cpu, best_freq);
+		}
+	}
+
 	if (cdev[cpu])
 		return;
 
